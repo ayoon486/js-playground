@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>사칙연산</title>
+</head>
+<body>
+  <p>두 수를 입력받아 4칙연산의 결과를 표시해보자</p>
+  <button type="button">시작!</button>
+  <dl>
+    <dt>결과</dt>
+    <dd class="result"></dd>
+  </dl>
+  <script>
+    var btnStart = document.querySelector('button')
+        eleResult = document.querySelector('.result');
+    var myOperator = function (x, y) {
+      return `${x}+${y}=${x+y}<br>${x}-${y}=${x - y}<br>${x}x${y}=${x * y}<br>${x}/${y}=${x / y}`;
+    };
+    btnStart.addEventListener('click', function () {
+      var num = '';
+      num = prompt('4칙 연산을 수행할 자연수 2개를 입력하세요, ex)2,3');
+      var getNum = num.split(','),
+          firstNum = Number(getNum[0]),
+          secondNum = Number(getNum[1]);
+      //console.log('firstNum===', firstNum)
+      //console.log('secondNum===', secondNum)
+      eleResult.innerHTML = myOperator(firstNum, secondNum);
+      eleResult.style.color = 'red';
+    });
+
+  </script>
+</body>
+</html>
