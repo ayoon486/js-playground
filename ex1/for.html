@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>반복문</title>
+</head>
+<body>
+  <script>
+    var result = 0;
+    for(var i = 0; i <= 100; i++) {
+      //result += i;//(result = result + i)
+      if(i%2 === 0) result += i;
+    }
+    console.log(result);
+
+    /*/
+    var userInputVal = prompt('숫자를 입력하면 해당 숫자를 모두 합해드림'),
+        len = userInputVal.length
+        result2 = 0;
+    
+        for(var i = 0; i < len; i++) {
+          result2 += Number(userInputVal[i]);
+        }
+        console.log(result2);
+  /*/
+  </script>
+</body>
+</html>

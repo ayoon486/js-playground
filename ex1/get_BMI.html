@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>BMI 지수 계산하기</title>
+</head>
+<body>  
+  <dl>
+    <dt>나의 BMI지수는?</dt>
+    <dd class="result"></dd>
+  </dl>
+  <script>
+    var myWeight = Number(prompt('몸무게를 입력하세요 ex) 70')),
+        myTall = Number(prompt('키를 입력하세요 ex) 170'));
+    
+    var result = (myWeight / (myTall * myTall)) * 10000,
+        eleResult = document.querySelector('.result');
+    eleResult.innerHTML = result;
+    if(result > 25) {
+      console.log('빨강')
+      eleResult.style.color = 'red';
+    }
+  </script>
+</body>
+</html>
