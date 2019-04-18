@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>특정구간 소수 구하기</title>
+  <style>
+    li{display:inline-block;}
+    li:after{content:', '}
+  </style>
+</head>
+
+<body>
+  <p>1 ~ 10000 사이의 소수를 화면에 출력하는 프로그램을 작성하자</p>
+  <ol id="list-prime"></ol>
+  <script>
+    var numbers = {};
+    numbers.prime = [];
+    numbers.targetNum = [];
+    numbers.setTargetNum = function (maxNum) {
+      for (var i = 2; i < maxNum; i++) {
+        this.targetNum.push(i)
+      }
+    };    
+
+    numbers.isPrime = function (maxNum) {      
+      
+      for (var k = 2; k < maxNum; k++) {
+        if (maxNum % k === 0) {
+          // 이 조건에 맞으면 해당 숫자는 합성수이다.         
+          return false;
+        }
+      }
+
+      return true;
+
+    };
+    numbers.setPrime = function () {
+      var _this = this;
+      var n = _this.targetNum;
+      for(var i = 0; i < n.length; i++) {
+        if(_this.isPrime(n[i])) {
+          _this.prime.push(n[i]);
+        }
+      }      
+    };
+    numbers.printPrime = function () {
+      var result = this.prime.join('</li>\n<li>');
+      var Li = '\n<li>' + result + '</li>\n',
+        targetEle = document.getElementById('list-prime');
+      targetEle.style.listStyle = 'none'
+      targetEle.innerHTML = Li;
+    }    
+    
+    numbers.init = function (maxNum) {
+      this.setTargetNum(maxNum);
+      this.setPrime();
+      this.printPrime();
+    }
+
+    numbers.init(500);
+  </script>
+</body>
+
+</html>
