@@ -17,7 +17,6 @@
   <ol id="list-prime"></ol>
   <script>
     var numbers = {};
-    numbers.prime = [];
     numbers.targetNum = [];
     numbers.setTargetNum = function (maxNum) {
       for (var i = 2; i < maxNum; i++) {
@@ -38,13 +37,14 @@
 
     };
     numbers.setPrime = function () {
-      var _this = this;
-      var n = _this.targetNum;
-      for(var i = 0; i < n.length; i++) {
-        if(_this.isPrime(n[i])) {
-          _this.prime.push(n[i]);
-        }
-      }      
+      this.prime = this.targetNum.filter(v => this.isPrime(v))
+      // var _this = this;
+      // var n = _this.targetNum;
+      // for(var i = 0; i < n.length; i++) {
+      //   if(_this.isPrime(n[i])) {
+      //     _this.prime.push(n[i]);
+      //   }
+      // }      
     };
     numbers.printPrime = function () {
       var result = this.prime.join('</li>\n<li>');
