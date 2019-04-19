@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>계산기</title>
+  <style>
+  *{margin:0;padding:0;}
+  body{}
+  button{border:0;border-radius:0;color:#fff;}
+  .wrap-calc{position:fixed;top:200px;left:50%;width:350px;margin-left:-175px;background:#23282e;}
+  .wrap-calc button{float:left;width:25%;height:70px;background:#5a5d63;border-right:1px solid #262832;border-bottom:1px solid #262832;font-family: Arial, Helvetica, sans-serif;font-size:36px;}
+  .wrap-calc .point{background:#ff940e}
+  .wrap-calc button:nth-child(1),.wrap-calc button:nth-child(2),.wrap-calc button:nth-child(3){background:#3a3c42;}  
+  .wrap-calc input[type=text]{width:100%;height:70px;border:0;padding-right:15px;background:0;color:#fff;font-weight:bold;text-align:right;box-sizing:border-box;font-size:40px;font-family: Arial, Helvetica, sans-serif}
+  </style>
+</head>
+<body>
+  <div class="wrap-calc">
+    <input type="text" readonly value="0" id="display">
+    <div class="btn-area">
+      <button type="button">C</button>
+      <button type="button">+/-</button>
+      <button type="button">%</button>
+      <button type="button" class="point">÷</button>
+      <button type="button" class="calc-txt">7</button>
+      <button type="button" class="calc-txt">8</button>
+      <button type="button" class="calc-txt">9</button>
+      <button type="button" class="point">x</button>
+      <button type="button" class="calc-txt">4</button>
+      <button type="button" class="calc-txt">5</button>
+      <button type="button" class="calc-txt">6</button>
+      <button type="button" class="point">-</button>
+      <button type="button" class="calc-txt">1</button>
+      <button type="button" class="calc-txt">2</button>
+      <button type="button" class="calc-txt">3</button>
+      <button type="button" class="point">+</button>
+      <button type="button" class="calc-txt" style="width:50%">0</button>
+      <button type="button" class="calc-txt">.</button>
+      <button type="button" class="point">=</button>
+    </div>
+  </div>
+  <script>
+    var calc = calc || {};
+    calc.nodes = document.querySelectorAll('.calc-txt');
+    calc.operator = document.querySelectorAll('.point');
+    calc.eleOperator = Array.from(calc.operator);
+    calc.eleCalcResult = document.getElementById('display');
+    calc.calcNumPlace = '';
+    calc.getNumber = function (evtTarget) {
+      return evtTarget.textContent;
+    }
+    calc.showCalcProcess = function (v) {
+      this.eleCalcResult.value = v;
+    }
+    calc.reset = function () {
+
+    }
+    Array.prototype.forEach.call(calc.nodes, function (el) {
+      el.addEventListener('click', function () {
+        if (calc.getNumber(this) === '0' && calc.calcNumPlace === '') {
+          return;
+        }
+        calc.calcNumPlace += calc.getNumber(this)
+        
+        calc.showCalcProcess(calc.calcNumPlace);
+      });
+    });
+    calc.eleOperator.forEach(function (el) {
+      el.addEventListener('click', function () {
+        console.log(this)
+      })
+    })
+    
+  </script>
+</body>
+</html>
